@@ -24,15 +24,17 @@ while c != 0:
         f'\nурон: {p.dmg}',
         f'\nсопротивление: {p.res}'
     )
+    
     i = int(input('> '))
-    if i == 1:
-        p.hp += 1
-        c -= 1
-    elif i == 2:
-        p.dmg += 1
-        c -= 1
-    elif i == 3:
-        p.res += 1
-        c -= 1
-    else:
-        print('i не может быть меньше 1 и больше 3')
+    match i:
+        case 1: 
+            p.hp += 1
+            c -= 1
+        case 2:
+            p.dmg += 1
+            c -= 1
+        case 3:
+            p.res += 1
+            c -= 1
+        case _:
+            print('нельзя ввести меньше 1 и больше 3')
