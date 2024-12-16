@@ -33,8 +33,8 @@ class btl:
 
             match choose:
                 case 1:
-                    урон = char_dmg * (ст_лд_res / 10)
-                    print(f'Вы наносите аномалии урон: {урон}')
+                    урон = char_dmg / (ст_лд_res * 0.2)
+                    print(f'Вы наносите аномалии урон: {урон}\n')
                     ст_лд_hp -= урон
             
                 case 2:
@@ -47,7 +47,12 @@ class btl:
                     pass
             
             if ст_лд_hp > 0:
-                hp_ch -= ст_лд_dmg * (char_res / 10)
-            
+                hp_ch -= ст_лд_dmg / (char_res / 3)
+                print(f'урон от аномалии: {ст_лд_dmg / (char_res / 3)}')
+                print(f'Ваше здоровье: {hp_ch} | Здоровье аномалии: {ст_лд_hp}')
+
             else:
-                break
+                return True, hp_ch
+            
+        return False, hp_ch
+

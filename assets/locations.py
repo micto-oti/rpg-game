@@ -17,12 +17,11 @@ def game_loc(ch_hp, char_dmg, char_res):
     while opt < 1 or opt > 4:
         print('Выберите одну из опций')
         opt = int(input('> '))
-        
-
 
     match opt:
         case 1:
-            evs1.Evs.бой(ch_hp, char_dmg, char_res)
+            result = evs1.Evs.бой(ch_hp, char_dmg, char_res)
+            return result
 
         case 2:
             return opt

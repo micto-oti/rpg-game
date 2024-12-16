@@ -13,17 +13,10 @@ import events_1 as evs1
 ########################
 mn.main_menu.m_n()
 
-p_name = input('введите имя:\n> ')
+p_name = input('\nвведите имя:\n> ')
 p = ch.Player(p_name)
 
 ########################
-""" print(
-    f'имя: {p.name}',
-    f'\nздоровье: {p.hp}',
-    f'\nурон: {p.dmg}',
-    f'\nсопротивление: {p.res}'
-)
- """
 
 def распределение_очков():
     main_hp = p.hp
@@ -78,10 +71,17 @@ cred = 0
 ch_hp = char_hp
 while ch_hp > 0:
     ch_hp = char_hp
-    while enkefalin < 30 or ch_hp > 0:
+    while enkefalin < 30 and ch_hp > 0:
         print("\nкуда пойти?")
-        loc.game_loc(ch_hp, char_dmg, char_res)
-        
-        print(ch_hp)
+        res = loc.game_loc(ch_hp, char_dmg, char_res)
+        ch_hp = int(res[1])
 
-print('УМЕР')
+        if res == False:
+            print('УМЕР')
+            break
+
+    if res == False:
+        print('УМЕР')
+        break
+
+

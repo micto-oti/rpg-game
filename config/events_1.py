@@ -30,13 +30,15 @@ class Evs:
         match rand:
             case 1:
                 print(f'\nВы пришли в отдел контроля')
-                print(f'Вы столкнулись с аномалией Старая леди {ст_лд_hp}')
-                btl_sts.btl.old_lady(hp_ch, char_dmg, char_res, ст_лд_hp)
-                    
+                print('\nВы столкнулись с аномалией Старая леди')
+                print(f'Ваше здоровье: {hp_ch} | Здоровье аномалии: {ст_лд_hp}')
+                res = btl_sts.btl.old_lady(hp_ch, char_dmg, char_res, ст_лд_hp)
 
-                return hp_ch
+                return res 
             
             case 2:
                 print('Вы пришли в отдел контроля и получили предмет')
+                return True, hp_ch
             case 3:
                 print('Вы пришли в отдел контроля.\nа нахуя вы сюда пришли?')
+                return True, hp_ch
