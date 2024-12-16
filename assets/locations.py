@@ -1,17 +1,32 @@
+import sys
+sys.path.append(r'E:\projects\github\rpg-game\config')
+sys.path.append(r'E:\projects\github\rpg-game')
+sys.path.append(r'E:\projects\github\rpg-game\assets')
+import class_enemy as cl_en
+import events_1 as evs1
 
-class locations:
-    def game_loc():
-        print('1. Отдел контроля')
-        print('2. Отдел исследования')
-        print('3. Отдел подавления')
+######
+
+def game_loc(ch_hp, char_dmg, char_res):
+    print('1. Отдел контроля')
+    print('2. Отдел исследования')
+    print('3. Отдел подавления')
+    print('4. Меню')
+    opt = int(input('> '))
+
+    while opt < 1 or opt > 4:
+        print('Выберите одну из опций')
         opt = int(input('> '))
         
-        match opt:
-            case 1:
-                pass
-            case 2:
-                pass
-            case 3:
-                pass
-            case _:
-                print('выберите 1 из локаций')
+
+
+    match opt:
+        case 1:
+            evs1.Evs.бой(ch_hp, char_dmg, char_res)
+
+        case 2:
+            return opt
+        case 3:
+            return opt
+        case 4:
+            return opt

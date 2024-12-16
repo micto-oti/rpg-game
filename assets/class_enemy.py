@@ -1,9 +1,26 @@
 import random as r
 
-class st_abnormaly:
-    def __init__(self, name):
-        self.name = name
-        self.hp = int(r.randint(40, 100))
-        self.res = int(r.randint(5, 20))
-        self.dmg = int(r.randint(10, 25))
+###### Аномалии первого уровня
+
+class тот_кто_ждёт:
+    name = 'тот кто ждёт'
+    hp = 60
+    res = 2
+    dmg = 5
+
+###### Аномалии второго уровня        
+
+class старая_леди:
+    name = 'старая леди'
+    hp = 30
+    res = 10
+    dmg = 10
+    
+###### Аномалии третьего уровня
         
+class тысяча_лиц:
+    name = 'тысяча лиц'
+    hp = 90
+    res = 10
+    dmg = 20
+
