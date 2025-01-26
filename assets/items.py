@@ -1,18 +1,16 @@
 import sys
 sys.path.append(r'E:\projects\github\rpg-game')
 
-items = ['лекарство','энкевалин','таблетка','кредиты']
+class invent:
+    def __init__(self):
+        self.inventory = [0, 0, 0, 0] # 1 - хилка, 2 - таблетка, 3 - экефалин, 4 - деньги
 
-def heal(ch_hp, char_hp):
-    if ch_hp+5 < char_hp:
-        ch_hp += 5
-        print('heal')
-        print(ch_hp)
-    elif ch_hp+5 > char_hp:
-        ch_hp = char_hp
-
-def enk(enkefalin):
-    enkefalin += 1
-
-def credits(cred):
-    cred += 2
+    def add_items(f):
+        if f == 'add_heal':
+            return 1
+        elif f == 'add_mana':
+            return 2
+        elif f == 'add_enk':
+            return 3
+        elif f == 'add_money':
+            return 4
