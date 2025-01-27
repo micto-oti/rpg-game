@@ -52,7 +52,7 @@ class Evs:
                     else:
                         itms.add_item('лекарство', 1)
 
-                        print('Вы получили ' + item + ' (1)')
+                        print('Вы получили Аптечка (1)')
                     
                     cont_game = input('> ')
 
@@ -99,7 +99,7 @@ class Evs:
                     else:
                         itms.add_item('таблетка', 1)
 
-                        print('Вы получили ' + item + ' (1)')
+                        print('Вы получили Капсула энкефалина (1)')
 
                     cont_game = input('> ')
 
@@ -140,12 +140,12 @@ class Evs:
                     elif item == 'лекарство':
                         itms.add_item('лекарство', 1)
 
-                        print('Вы получили ' + item + ' (1)')
+                        print('Вы получили Аптечка (1)')
                     
                     else:
                         itms.add_item('таблетка', 1)
 
-                        print('Вы получили ' + item + ' (1)')
+                        print('Вы получили Капсула энкефалина (1)')
 
                     
                     cont_game = input('> ')

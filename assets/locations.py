@@ -66,7 +66,7 @@ def game_loc(ch_hp, p):
                 print(f'Ваше здоровье: {hp_ch}/{p.hp} | Ваша энергия: {p.mana}/{p.g_mana}\n')
                 itms.display_items()
                 print('1. Восстаносить здоровье')
-                print('2. Восстановить ману')
+                print('2. Восстановить энергию')
                 opt = (input('> '))
                     
 
@@ -79,34 +79,34 @@ def game_loc(ch_hp, p):
                         if инвентарь['лекарство'] > 0 and hp_ch < (p.hp-5):
                             hp_ch += 5
                             itms.remove_item('лекарство', 1)
-                            print(f'Ваше здоровье: {hp_ch}/{p.ph} | Здоровье аномалии: {enemy_hp}\n')
+                            print(f'Ваше здоровье: {hp_ch}/{p.ph} | Ваша энергия: {p.mana}/{p.g_mana}\n')
                             cont_game = input('> ')
                         
                         elif инвентарь['лекарство'] > 0 and hp_ch == (p.hp-5):
                             hp_ch = p.hp
                             itms.remove_item('лекарство', 1)
-                            print(f'Ваше здоровье: {hp_ch}/{p.ph} | Здоровье аномалии: {enemy_hp}\n')
+                            print(f'Ваше здоровье: {hp_ch}/{p.ph} | Ваша энергия: {p.mana}/{p.g_mana}\n')
                             cont_game = input('> ')
                             
                         elif инвентарь['лекарство'] == 0:
-                            print('Вы не можете восстановить здоровье (нет лекарств)')
+                            print('Вы не можете восстановить здоровье (нет Аптечек)')
                             cont_game = input('> ')
 
                     case '2': # мана
                         if инвентарь['таблетка'] > 0 and p.mana < (p.g_mana-5):
                             p.mana += 5
                             itms.remove_item('таблетка', 1)
-                            print(f'Ваша энергия: {p.mana}/{p.g_mana} | Здоровье аномалии: {enemy_hp}\n')
+                            print(f'Ваша энергия: {p.mana}/{p.g_mana} | Ваша энергия: {p.mana}/{p.g_mana}\n')
                             cont_game = input('> ')
                             
                         elif инвентарь['таблетка'] > 0 and p.mana == (p.g_mana-5):
                             p.mana = p.g_mana
                             itms.remove_item('таблетка', 1)
-                            print(f'Ваша энергия: {p.mana}/{p.g_mana} | Здоровье аномалии: {enemy_hp}\n')
+                            print(f'Ваша энергия: {p.mana}/{p.g_mana} | Ваша энергия: {p.mana}/{p.g_mana}\n')
                             cont_game = input('> ')
                             
                         elif инвентарь['таблетка'] == 0:
-                            print('Вы не можете восстановить здоровье (нет таблеток)')
+                            print('Вы не можете восстановить здоровье (нет Капсул энкефалина)')
                             cont_game = input('> ')
                 
                 return None, ch_hp
@@ -127,8 +127,8 @@ def game_loc(ch_hp, p):
             
             elif menu_option == 4:
                 print("\033[H\033[J", end="")
-                print('1. Купить лекарство (75)')
-                print('2. Купить таблетку  (50)\n')
+                print('1. Купить Аптечку (75)')
+                print('2. Купить Капсулу энкефалина  (50)\n')
                 print('Выберите один из вариантов')
 
                 i = input('> ')
@@ -149,5 +149,5 @@ def game_loc(ch_hp, p):
                         else:
                             print('Вам не хватает денег')
                             cont_game = input('> ')
-                            
+
                 return None, ch_hp
