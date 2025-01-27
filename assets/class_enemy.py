@@ -21,7 +21,7 @@ enemies_Tier1 = [
 enemies_Tier2 = [
     Enemy("Не прикасайся ко мне", attack=11, defense=4, health=36, exp_reward=8),
     Enemy("Большая птица", attack=9, defense=6, health=27, exp_reward=7),
-    Enemy("Маленький птиц", attack=9, defense=5, health=30, exp_reward=8)
+    Enemy("Маленький принц", attack=9, defense=5, health=30, exp_reward=8)
 ]
 
 enemies_Tier3 = [
@@ -36,6 +36,6 @@ def Tier1_recall():
 
 def Tier2_recall():
     return enemies_Tier2
-
+Ы
 def Tier3_recall():
     return enemies_Tier3

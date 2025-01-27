@@ -62,6 +62,7 @@ class btl:
                     else:
                         p.enk += 1
                         p.exp += enemy.exp
+                        its.add_item('деньги', 50)
                         return True, hp_ch
 
                 case '2':
@@ -101,7 +102,7 @@ class btl:
 
                         case '3':
                             if p.mana >= 15:
-                                item = random.choice('таблетка','лекарство','деньги')
+                                item = random.choice(['таблетка','лекарство','деньги'])
                                 p.mana -= 15
                                 if item == 'деньги':
                                     money = random.randint(5,50)
@@ -109,6 +110,9 @@ class btl:
 
                                     print('Вы сбежали, найдя по дороге ' + item + f'({money})')
                                     cont_game = input('> ')
+    
+                                    return True, hp_ch
+
                                 else:
                                     if item == 'таблетка':
                                         it_id = 'Капсула энкефалина'
@@ -123,14 +127,13 @@ class btl:
                                 print('У вас не хватает энергии')  
                                 cont_game = input('> ') 
 
-                            return True, hp_ch
                     
                 case '3':
                     print("\033[H\033[J", end="")
                     print(f'Ваше здоровье: {hp_ch}/{p.hp} | Ваша энергия: {p.mana}/{p.g_mana}\n')
                     its.display_items()
-                    print('1. Восстаносить здоровье')
-                    print('2. Восстановить энергию')
+                    print('1. Восстаносить здоровье ' + str(инвентарь['лекарство']))
+                    print('2. Восстановить энергию ' + str(инвентарь['таблетка']))
                     opt = (input('> '))
                     
 
@@ -143,13 +146,13 @@ class btl:
                             if инвентарь['лекарство'] > 0 and hp_ch < (p.hp-5):
                                 hp_ch += 5
                                 its.remove_item('лекарство', 1)
-                                print(f'Ваше здоровье: {hp_ch}/{p.ph} | Здоровье аномалии: {enemy_hp}\n')
+                                print(f'Ваше здоровье: {hp_ch}/{p.hp} | Здоровье аномалии: {enemy_hp}\n')
                                 cont_game = input('> ')
                             
                             elif инвентарь['лекарство'] > 0 and hp_ch == (p.hp-5):
                                 hp_ch = p.hp
                                 its.remove_item('лекарство', 1)
-                                print(f'Ваше здоровье: {hp_ch}/{p.ph} | Здоровье аномалии: {enemy_hp}\n')
+                                print(f'Ваше здоровье: {hp_ch}/{p.hp} | Здоровье аномалии: {enemy_hp}\n')
                                 cont_game = input('> ')
                             
                             elif инвентарь['лекарство'] == 0:

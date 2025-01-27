@@ -36,6 +36,7 @@ class Evs:
                     
                     res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
 
+
                     return res
             
                 case 2:
@@ -76,6 +77,7 @@ class Evs:
                     #print("\033[H\033[J", end="")
                     
                     res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
+                    
 
                     return res
             
@@ -123,6 +125,7 @@ class Evs:
                     #print("\033[H\033[J", end="")
                     
                     res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
+
 
                     return res
             

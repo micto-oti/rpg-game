@@ -121,7 +121,6 @@ while ch_hp > 0 or enkefalin < 300:
                     p.res += 1
                     Skill_points -= 1
                 case _:
-                #print('нельзя ввести меньше 1 и больше 3')
                     pass
 
 
