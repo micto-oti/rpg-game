@@ -4,103 +4,156 @@ sys.path.append(r'E:\projects\github\rpg-game\config')
 import battle_status as btl_sts
 import random as r
 import class_enemy as cl_en
+import items as itms
 
-###### импорт аномалий
-""" 
-т_к_ж = cl_en.тот_кто_ждёт()
-ст_лд = cl_en.старая_леди()
-т_л = cl_en.тысяча_лиц()
- """
-###### импорт характеристик аномалий
+###### создаём инвентарь 
 
-# характеристики аномалий
-""" 
-т_к_ж_hp = т_к_ж.hp
+Tier1 = cl_en.Tier1_recall()
+Tier2 = cl_en.Tier2_recall()
+Tier3 = cl_en.Tier3_recall()
 
-ст_лд_hp = ст_лд.hp
-
-т_л_hp = т_л.hp
- """
 ######
 
+
+
 class Evs:
-    def бой(hp_ch, char_dmg, char_res, enemy):
+    def бой(hp_ch, p, enemy_tier):
         
-        ######
+##############################################
+        
+        print("\033[H\033[J", end="")
 
-        if enemy.name == 'старая леди':
+        tier = int(enemy_tier)
+
+        if tier == 1:
+            abnormally = r.choice(Tier1)
             rand = r.randint(1,3)
+            money = 0
 
             match rand:
                 case 1:
-                    print("\033[H\033[J", end="")
-                    print(f'Вы пришли в отдел контроля')
-                    print('Вы столкнулись с аномалией Старая леди')
-                    print(f'\nВаше здоровье: {hp_ch} | Здоровье аномалии: {enemy.hp}')
-                    res = btl_sts.btl.old_lady(hp_ch, char_dmg, char_res, enemy.hp)
+                    #print("\033[H\033[J", end="")
+                    
+                    res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
 
-                    return res 
+                    return res
             
                 case 2:
-                    print('Вы пришли в отдел контроля и получили предмет')
-                    item = r.choice(['лекарство','таблетка','деньги'])
+
+                    print('Вы пришли в отдел контроля и получили предмет:')
+                    item = r.choice(['лекарство','деньги'])
+
                     if item == 'деньги':
                         money = r.randint(5,50)
+                        itms.add_item('деньги', money)
+
+                        print('Вы получили ' + item + f'({money})')
+
                     else:
-                        money == 0
-                    print('Вы получили' + item + f'({money})')
-                    return True, hp_ch, None, item, money
-                case 3:
-                    print('Вы пришли в отдел контроля.\nа зачем вы сюда пришли?')
-                    return True, hp_ch, None
-        
-        ######
+                        itms.add_item('лекарство', 1)
 
-        elif enemy.name == 'тот кто ждёт':
+                        print('Вы получили ' + item + ' (1)')
+                    
+                    cont_game = input('> ')
 
-            rand = r.randint(1,3)
-
-            match rand:
-                case 1:
-                    print("\033[H\033[J", end="")
-                    print(f'Вы пришли в отдел исследований')
-                    print('Вы столкнулись с аномалией Тот кто ждёт')
-                    print(f'\nВаше здоровье: {hp_ch} | Здоровье аномалии: {enemy.hp}')
-                    res = btl_sts.btl.old_lady(hp_ch, char_dmg, char_res, enemy.hp)
-
-                    return res 
-            
-                case 2:
-                    print('Вы пришли в отдел исследований и получили предмет')
-                    item = r.choice(['лекарство','таблетка','энкефалин'])
-                    if item == 'деньги':
-                        money = r.randint(5,50)
-                    else:
-                        money == 0
-                    print('Вы получили' + item + f'({money})')
-                    return True, hp_ch, None, item, money
-                case 3:
-                    print('Вы пришли в отдел исследований.\nа зачем вы сюда пришли?')
-                    return True, hp_ch, None
+                    return None, hp_ch, None
                 
-        ######
+                case 3:
 
-        elif enemy.name == 'тысяча лиц':
+                    res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
+
+                    return res
+                
+##############################################
+
+        if tier == 2:
+            abnormally = r.choice(Tier2)
             rand = r.randint(1,3)
+            money = 0
 
             match rand:
                 case 1:
-                    print("\033[H\033[J", end="")
-                    print(f'Вы пришли в отдел подавления')
-                    print('Вы столкнулись с аномалией Старая леди')
-                    print(f'\nВаше здоровье: {hp_ch} | Здоровье аномалии: {enemy.hp}')
-                    res = btl_sts.btl.old_lady(hp_ch, char_dmg, char_res, enemy.hp)
+                    #print("\033[H\033[J", end="")
+                    
+                    res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
 
-                    return res 
+                    return res
             
                 case 2:
-                    print('Вы пришли в отдел подавления и получили предмет')
-                    return True, hp_ch, None
+
+                    print('Вы пришли в отдел исследований и получили предмет:')
+                    item = r.choice(['деньги','энкефалин', 'таблетка'])
+
+                    if item == 'деньги':
+                        money = r.randint(5,50)
+                        itms.add_item('деньги', money)
+
+                        print('Вы получили ' + item + f'({money})')
+
+                    elif item == 'энкефалин':
+                        print('Вы получили ' + item + ' (1)')
+                        cont_game = input('> ')
+
+                        return True, hp_ch, None
+                    
+                    else:
+                        itms.add_item('таблетка', 1)
+
+                        print('Вы получили ' + item + ' (1)')
+
+                    cont_game = input('> ')
+
+                    return None, hp_ch, None
+                
                 case 3:
-                    print('Вы пришли в отдел подавления.\nа зачем вы сюда пришли?')
-                    return True, hp_ch, None
+
+                    res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
+
+                    return res
+
+##############################################
+
+        if tier == 3:
+            abnormally = r.choice(Tier3)
+            rand = r.randint(1,3)
+            money = 0
+
+            match rand:
+                case 1:
+                    #print("\033[H\033[J", end="")
+                    
+                    res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
+
+                    return res
+            
+                case 2:
+
+                    print('Вы пришли в отдел контроля и получили предмет:')
+                    item = r.choice(['лекарство', 'таблетка','деньги'])
+
+                    if item == 'деньги':
+                        money = r.randint(5,50)
+                        itms.add_item('деньги', money)
+
+                        print('Вы получили ' + item + f'({money})')
+
+                    elif item == 'лекарство':
+                        itms.add_item('лекарство', 1)
+
+                        print('Вы получили ' + item + ' (1)')
+                    
+                    else:
+                        itms.add_item('таблетка', 1)
+
+                        print('Вы получили ' + item + ' (1)')
+
+                    
+                    cont_game = input('> ')
+
+                    return None, hp_ch, None
+                
+                case 3:
+
+                    res = btl_sts.btl.old_lady(hp_ch, p, abnormally)
+
+                    return res
