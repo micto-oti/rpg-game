@@ -36,6 +36,6 @@ def Tier1_recall():
 
 def Tier2_recall():
     return enemies_Tier2
-Ы
+
 def Tier3_recall():
     return enemies_Tier3
